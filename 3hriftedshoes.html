@@ -1,0 +1,1005 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>3hriftedshoes</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
+    :root {
+      --bg:#ffffff;
+      --surface:#f7f5f2;
+      --card:#ffffff;
+      --brown:#8B6343;
+      --brown-lt:#b8895c;
+      --gray-lt:#9c9490;
+      --cream:#1a1614;
+      --text:#2a2520;
+      --muted:#9c9490;
+      --border:#e8e2db;
+      --border-lt:#d4cdc5;
+    }
+    body { background:var(--bg); color:var(--text); font-family:'DM Sans',sans-serif; min-height:100vh; }
+
+    nav {
+      display:flex; align-items:center; justify-content:space-between;
+      padding:1.4rem 1.6rem; border-bottom:1px solid var(--border);
+      position:sticky; top:0; background:rgba(255,255,255,0.97);
+      backdrop-filter:blur(12px); z-index:100;
+    }
+    .logo { font-family:'Cormorant Garamond',serif; font-size:1.5rem; font-weight:600; color:var(--cream); }
+    .logo span { color:var(--brown); }
+    .nav-right { display:flex; align-items:center; gap:0.8rem; }
+    .nav-dot { width:7px; height:7px; border-radius:50%; background:var(--brown-lt); animation:pulse 2.5s ease-in-out infinite; }
+    @keyframes pulse { 0%,100%{opacity:.5;transform:scale(1)} 50%{opacity:1;transform:scale(1.3)} }
+    .nav-label { font-size:0.68rem; color:var(--muted); letter-spacing:2px; text-transform:uppercase; font-family:'DM Mono',monospace; }
+
+    .hero { padding:0; border-bottom:1px solid var(--border); position:relative; overflow:hidden; background:var(--surface); }
+    .hero-inner { padding:2.8rem 1.6rem 0; position:relative; z-index:1; }
+    .hero::before { content:''; position:absolute; top:0; right:0; width:100%; height:100%; background:radial-gradient(ellipse at 80% 20%,rgba(139,99,67,.10) 0%,transparent 65%); pointer-events:none; }
+    .hero-eyebrow { font-family:'DM Mono',monospace; font-size:0.65rem; color:var(--brown); letter-spacing:3px; text-transform:uppercase; margin-bottom:1.4rem; display:flex; align-items:center; gap:0.6rem; }
+    .hero-eyebrow::before { content:''; display:inline-block; width:24px; height:1px; background:var(--brown); }
+    .hero h1 { font-family:'Cormorant Garamond',serif; font-size:clamp(3rem,11vw,5.5rem); font-weight:600; line-height:1; letter-spacing:-1px; color:var(--cream); margin-bottom:0.4rem; }
+    .hero h1 em { font-style:italic; color:var(--brown); display:block; }
+    .hero-sub { color:var(--muted); font-size:0.88rem; font-weight:300; max-width:300px; line-height:1.7; margin:1.2rem 0 1.8rem; }
+    .hero-shoe { width:100%; height:220px; object-fit:cover; object-position:center 30%; display:block; border-top:1px solid var(--border); filter:brightness(.96) contrast(1.04); }
+    .hero-stats { display:grid; grid-template-columns:repeat(2,1fr); background:#fff; border-top:1px solid var(--border); }
+    .stat { padding:1rem 1.2rem; border-right:1px solid var(--border); border-bottom:1px solid var(--border); }
+    .stat:nth-child(2) { border-right:none; }
+    .stat:nth-child(3) { border-bottom:none; }
+    .stat:nth-child(4) { border-right:none; border-bottom:none; }
+    .stat-num { font-family:'Cormorant Garamond',serif; font-size:1.4rem; font-weight:600; color:var(--cream); line-height:1; }
+    .stat-label { font-size:0.6rem; color:var(--muted); text-transform:uppercase; letter-spacing:2px; margin-top:0.25rem; font-family:'DM Mono',monospace; }
+
+    .marquee-wrap { overflow:hidden; border-top:1px solid var(--border); border-bottom:1px solid var(--border); padding:0.75rem 0; background:var(--surface); }
+    .marquee { display:flex; gap:3rem; animation:marquee 22s linear infinite; width:max-content; }
+    .marquee span { font-family:'DM Mono',monospace; font-size:0.65rem; color:var(--muted); letter-spacing:2.5px; text-transform:uppercase; white-space:nowrap; }
+    .marquee span.acc { color:var(--brown); }
+    @keyframes marquee { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+    .search-bar-wrap { display:flex; align-items:center; gap:0.6rem; padding:0.9rem 1.6rem; background:#fff; border-bottom:1px solid var(--border); }
+    .search-icon { color:var(--muted); flex-shrink:0; display:flex; align-items:center; }
+    .search-input { flex:1; border:1px solid var(--border-lt); border-radius:3px; padding:0.45rem 0.8rem; font-family:'DM Sans',sans-serif; font-size:0.85rem; color:var(--text); background:var(--surface); outline:none; transition:border-color .2s; }
+    .search-input:focus { border-color:var(--brown); background:#fff; }
+    .search-input::placeholder { color:var(--muted); }
+    .filter-bar { display:flex; gap:0.5rem; padding:1.2rem 1.6rem; overflow-x:auto; scrollbar-width:none; border-bottom:1px solid var(--border); background:#fff; }
+    .filter-bar::-webkit-scrollbar { display:none; }
+    .filter-btn { background:none; border:1px solid var(--border-lt); color:var(--muted); padding:0.4rem 1rem; border-radius:2px; font-family:'DM Mono',monospace; font-size:0.68rem; letter-spacing:1.5px; text-transform:uppercase; cursor:pointer; white-space:nowrap; transition:all .25s; }
+    .filter-btn.active,.filter-btn:hover { background:var(--brown); border-color:var(--brown); color:#fff; }
+
+    .grid-section { padding:1.6rem; background:var(--surface); }
+    .section-label { font-family:'DM Mono',monospace; font-size:0.62rem; color:var(--muted); letter-spacing:3px; text-transform:uppercase; margin-bottom:1.4rem; display:flex; align-items:center; gap:0.8rem; }
+    .section-label::after { content:''; flex:1; height:1px; background:var(--border); }
+    .grid { display:grid; grid-template-columns:repeat(2,1fr); gap:1rem; }
+
+    .card { background:#fff; border-radius:6px; overflow:hidden; border:1px solid var(--border); transition:transform .3s,border-color .3s,box-shadow .3s; }
+    .card:hover { transform:translateY(-4px); border-color:var(--brown-lt); box-shadow:0 12px 40px rgba(139,99,67,.12); }
+
+    .card-gallery { width:100%; aspect-ratio:1; position:relative; overflow:hidden; background:#f7f5f2; }
+    .card-gallery img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transition:opacity .4s ease; cursor:zoom-in; }
+    .card-gallery img.active { opacity:1; }
+
+    .gallery-dots { position:absolute; bottom:0.5rem; left:50%; transform:translateX(-50%); display:flex; gap:0.3rem; z-index:2; }
+    .gallery-dots span { width:5px; height:5px; border-radius:50%; background:rgba(0,0,0,.2); transition:background .3s,transform .3s; }
+    .gallery-dots span.active { background:var(--brown); transform:scale(1.3); }
+
+    .gallery-arrow { position:absolute; top:50%; transform:translateY(-50%); background:rgba(255,255,255,.85); border:1px solid var(--border); color:var(--text); width:26px; height:26px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:0.9rem; cursor:pointer; z-index:3; opacity:0; transition:opacity .2s; user-select:none; }
+    .card:hover .gallery-arrow { opacity:1; }
+    .gallery-arrow.prev { left:0.5rem; }
+    .gallery-arrow.next { right:0.5rem; }
+
+    .badge { position:absolute; top:0.7rem; left:0.7rem; font-family:'DM Mono',monospace; font-size:0.58rem; font-weight:500; padding:0.2rem 0.55rem; border-radius:2px; text-transform:uppercase; letter-spacing:1.5px; z-index:2; }
+    .badge.hot { background:rgba(139,99,67,.15); color:var(--brown); border:1px solid rgba(139,99,67,.3); }
+    .badge.new { background:rgba(107,101,96,.1); color:var(--gray-lt); border:1px solid rgba(107,101,96,.3); }
+
+    .card-body { padding:0.9rem; }
+    .card-brand { font-family:'DM Mono',monospace; font-size:0.6rem; color:var(--brown); text-transform:uppercase; letter-spacing:2px; margin-bottom:0.3rem; }
+    .card-name { font-family:'Cormorant Garamond',serif; font-size:1.05rem; font-weight:600; color:var(--cream); margin-bottom:0.6rem; line-height:1.2; }
+    .card-meta { display:flex; align-items:center; justify-content:space-between; margin-bottom:0.8rem; }
+    .card-price { font-family:'DM Mono',monospace; font-size:0.9rem; color:var(--cream); font-weight:500; }
+    .card-size { font-family:'DM Mono',monospace; font-size:0.62rem; color:var(--muted); background:var(--surface); padding:0.2rem 0.5rem; border-radius:2px; border:1px solid var(--border); }
+
+    .card-condition { font-family:'DM Mono',monospace; font-size:0.6rem; color:var(--brown); background:rgba(139,99,67,.08); border:1px solid rgba(139,99,67,.2); padding:0.18rem 0.5rem; border-radius:2px; display:inline-block; margin-bottom:0.7rem; letter-spacing:1px; text-transform:uppercase; }
+    .order-btn { width:100%; background:var(--surface); color:var(--brown); border:1px solid var(--border-lt); border-radius:3px; padding:0.6rem; font-family:'DM Mono',monospace; font-size:0.68rem; font-weight:500; letter-spacing:1px; text-transform:uppercase; cursor:pointer; display:flex; align-items:center; justify-content:center; gap:0.5rem; transition:all .25s; text-decoration:none; }
+    .order-btn:hover { background:var(--brown); color:#fff; border-color:var(--brown); }
+
+    .wa-float { position:fixed; bottom:1.5rem; right:1.5rem; background:var(--brown); color:#fff; border:1px solid var(--brown-lt); border-radius:50px; padding:0.75rem 1.2rem; display:flex; align-items:center; gap:0.5rem; font-family:'DM Mono',monospace; font-size:0.7rem; font-weight:500; letter-spacing:1px; text-transform:uppercase; text-decoration:none; box-shadow:0 6px 24px rgba(139,99,67,.3); z-index:200; transition:all .25s; }
+    .wa-float:hover { background:var(--brown-lt); transform:translateY(-2px); }
+
+    footer { border-top:1px solid var(--border); padding:2.5rem 1.6rem; margin-bottom:5rem; background:#fff; }
+    .footer-logo { font-family:'Cormorant Garamond',serif; font-size:1.3rem; font-weight:600; color:var(--cream); margin-bottom:0.6rem; }
+    .footer-logo span { color:var(--brown); }
+    .footer-divider { width:30px; height:1px; background:var(--border-lt); margin:1.2rem 0; }
+    .footer-sub { font-size:0.75rem; color:var(--muted); line-height:1.8; font-family:'DM Mono',monospace; }
+    .footer-wa { font-family:'DM Mono',monospace; font-size:0.65rem; color:var(--brown); letter-spacing:1.5px; text-transform:uppercase; }
+
+    .lightbox { display:none; position:fixed; inset:0; background:rgba(0,0,0,.92); z-index:500; align-items:center; justify-content:center; }
+    .lightbox.open { display:flex; }
+    .lightbox img { max-width:92vw; max-height:82vh; object-fit:contain; border-radius:4px; }
+    .lightbox-close { position:absolute; top:1rem; right:1.2rem; color:#fff; font-size:1.5rem; cursor:pointer; background:none; border:none; font-family:'DM Mono',monospace; }
+
+    .welcome-overlay { display:flex; position:fixed; inset:0; background:rgba(26,22,20,0.7); backdrop-filter:blur(4px); z-index:1000; align-items:center; justify-content:center; padding:1.6rem; opacity:0; pointer-events:none; transition:opacity .35s ease; }
+    .welcome-overlay.show { opacity:1; pointer-events:auto; }
+    .welcome-overlay.hide { display:none; }
+    .welcome-card { background:#fff; border-radius:10px; max-width:340px; width:100%; padding:2.2rem 1.8rem; text-align:center; position:relative; border:1px solid var(--border); box-shadow:0 24px 60px rgba(0,0,0,.3); transform:translateY(16px) scale(.96); transition:transform .35s ease; }
+    .welcome-overlay.show .welcome-card { transform:translateY(0) scale(1); }
+    .welcome-close { position:absolute; top:0.7rem; right:0.8rem; background:none; border:none; color:var(--muted); font-size:1.1rem; cursor:pointer; line-height:1; }
+    .welcome-eyebrow { font-family:'DM Mono',monospace; font-size:0.62rem; color:var(--brown); letter-spacing:3px; text-transform:uppercase; margin-bottom:0.9rem; display:flex; align-items:center; justify-content:center; gap:0.5rem; }
+    .welcome-eyebrow::before,.welcome-eyebrow::after { content:''; width:18px; height:1px; background:var(--brown); }
+    .welcome-title { font-family:'Cormorant Garamond',serif; font-size:2rem; font-weight:600; color:var(--cream); line-height:1.15; margin-bottom:0.7rem; }
+    .welcome-title em { font-style:italic; color:var(--brown); }
+    .welcome-sub { font-size:0.85rem; color:var(--muted); line-height:1.7; font-weight:300; margin-bottom:1.6rem; }
+    .welcome-btn { display:inline-block; background:var(--brown); color:#fff; border:none; border-radius:3px; padding:0.75rem 1.8rem; font-family:'DM Mono',monospace; font-size:0.68rem; font-weight:500; letter-spacing:1.5px; text-transform:uppercase; cursor:pointer; transition:background .25s; }
+    .welcome-btn:hover { background:var(--brown-lt); }
+
+    /* Trust strip */
+    .trust-strip { background:var(--brown); padding:1.1rem 1.6rem; display:flex; gap:1rem; overflow-x:auto; scrollbar-width:none; }
+    .trust-strip::-webkit-scrollbar { display:none; }
+    .trust-item { display:flex; align-items:center; gap:0.45rem; white-space:nowrap; flex-shrink:0; }
+    .trust-item svg { width:13px; height:13px; color:#fff; flex-shrink:0; }
+    .trust-item span { font-family:'DM Mono',monospace; font-size:0.62rem; color:rgba(255,255,255,.9); letter-spacing:1.5px; text-transform:uppercase; }
+
+    /* Why Choose Us */
+    .why-section { padding:2.4rem 1.6rem; background:#fff; border-bottom:1px solid var(--border); }
+    .section-title { font-family:'Cormorant Garamond',serif; font-size:1.7rem; font-weight:600; color:var(--cream); margin-bottom:0.3rem; line-height:1.1; }
+    .section-title em { font-style:italic; color:var(--brown); }
+    .section-eyebrow { font-family:'DM Mono',monospace; font-size:0.6rem; color:var(--brown); letter-spacing:3px; text-transform:uppercase; margin-bottom:0.9rem; }
+    .why-list { display:flex; flex-direction:column; gap:0.75rem; margin-top:1.4rem; }
+    .why-item { display:flex; align-items:flex-start; gap:0.8rem; }
+    .why-icon { width:30px; height:30px; border-radius:50%; background:rgba(139,99,67,.1); display:flex; align-items:center; justify-content:center; flex-shrink:0; margin-top:0.1rem; }
+    .why-icon svg { width:14px; height:14px; color:var(--brown); }
+    .why-text strong { font-family:'DM Sans',sans-serif; font-size:0.88rem; font-weight:600; color:var(--cream); display:block; margin-bottom:0.1rem; }
+    .why-text small { font-family:'DM Mono',monospace; font-size:0.62rem; color:var(--muted); }
+
+    /* Latest Arrivals */
+    .arrivals-section { padding:2.4rem 0 2.4rem; background:var(--surface); border-bottom:1px solid var(--border); }
+    .arrivals-head { padding:0 1.6rem; margin-bottom:1.2rem; }
+    .arrivals-scroll { display:flex; gap:0.9rem; padding:0 1.6rem; overflow-x:auto; scrollbar-width:none; }
+    .arrivals-scroll::-webkit-scrollbar { display:none; }
+    .arrival-card { background:#fff; border:1px solid var(--border); border-radius:6px; overflow:hidden; flex-shrink:0; width:150px; transition:transform .3s,box-shadow .3s; cursor:pointer; }
+    .arrival-card:hover { transform:translateY(-3px); box-shadow:0 8px 24px rgba(139,99,67,.12); }
+    .arrival-img { width:150px; height:150px; object-fit:cover; display:block; }
+    .arrival-body { padding:0.6rem 0.7rem; }
+    .arrival-brand { font-family:'DM Mono',monospace; font-size:0.55rem; color:var(--brown); letter-spacing:1.5px; text-transform:uppercase; }
+    .arrival-name { font-family:'Cormorant Garamond',serif; font-size:0.95rem; font-weight:600; color:var(--cream); line-height:1.15; margin-top:0.1rem; }
+    .arrival-price { font-family:'DM Mono',monospace; font-size:0.75rem; color:var(--cream); margin-top:0.3rem; }
+
+    /* Reviews */
+    .reviews-section { padding:2.4rem 1.6rem; background:#fff; border-bottom:1px solid var(--border); }
+    .review-cards { display:flex; flex-direction:column; gap:1rem; margin-top:1.4rem; }
+    .review-card { border:1px solid var(--border); border-radius:6px; padding:1.1rem; background:var(--surface); }
+    .review-stars { font-size:0.85rem; letter-spacing:1px; margin-bottom:0.5rem; }
+    .review-text { font-size:0.85rem; color:var(--text); line-height:1.65; font-weight:300; margin-bottom:0.7rem; }
+    .review-author { font-family:'DM Mono',monospace; font-size:0.6rem; color:var(--brown); letter-spacing:1.5px; text-transform:uppercase; }
+
+    /* FAQ */
+    .faq-section { padding:2.4rem 1.6rem; background:var(--surface); border-bottom:1px solid var(--border); }
+    .faq-list { margin-top:1.4rem; display:flex; flex-direction:column; gap:0; border:1px solid var(--border); border-radius:6px; overflow:hidden; background:#fff; }
+    .faq-item { border-bottom:1px solid var(--border); }
+    .faq-item:last-child { border-bottom:none; }
+    .faq-q { width:100%; background:none; border:none; padding:1rem 1.1rem; display:flex; align-items:center; justify-content:space-between; text-align:left; cursor:pointer; gap:0.8rem; }
+    .faq-q-text { font-family:'DM Sans',sans-serif; font-size:0.88rem; font-weight:500; color:var(--cream); }
+    .faq-chevron { font-size:0.9rem; color:var(--brown); transition:transform .25s; flex-shrink:0; }
+    .faq-item.open .faq-chevron { transform:rotate(180deg); }
+    .faq-a { font-size:0.82rem; color:var(--muted); line-height:1.7; padding:0 1.1rem 1rem; display:none; font-weight:300; }
+    .faq-item.open .faq-a { display:block; }
+
+    /* Card stars & mini tags */
+    .card-stars { font-size:0.75rem; letter-spacing:1px; margin-bottom:0.5rem; display:flex; align-items:center; gap:0.35rem; }
+    .card-stars-label { font-family:'DM Mono',monospace; font-size:0.58rem; color:var(--muted); text-transform:uppercase; letter-spacing:1px; }
+    .card-tags { display:flex; flex-wrap:wrap; gap:0.35rem; margin-bottom:0.7rem; }
+    .card-tag { display:flex; align-items:center; gap:0.25rem; font-family:'DM Mono',monospace; font-size:0.56rem; color:var(--muted); letter-spacing:0.5px; }
+    .card-tag svg { width:9px; height:9px; color:var(--brown); }
+
+    /* Bottom Nav */
+    .bottom-nav { position:fixed; top:auto; bottom:0; left:0; right:0; height:auto; display:flex; background:rgba(255,255,255,0.98); backdrop-filter:blur(12px); border-top:1px solid var(--border); z-index:300; padding:0.55rem 0.5rem calc(0.55rem + env(safe-area-inset-bottom)); }
+    .bn-item { flex:1; background:none; border:none; display:flex; flex-direction:column; align-items:center; gap:0.25rem; padding:0.4rem 0.3rem; cursor:pointer; color:var(--muted); transition:color .2s,background .2s; border-radius:12px; }
+    .bn-item svg { width:21px; height:21px; stroke:var(--muted); fill:none; stroke-width:1.6; transition:stroke .2s; }
+    .bn-item span { font-family:'DM Mono',monospace; font-size:0.6rem; letter-spacing:0.5px; text-transform:uppercase; }
+    .bn-item.active { color:var(--brown); background:rgba(139,99,67,.10); border-radius:12px; }
+    .bn-item.active svg { stroke:var(--brown); }
+    body { padding-bottom:4.6rem; }
+
+    .page { display:none; }
+    .page.active { display:block; }
+
+    /* Order page */
+    .order-page-section { padding:3.2rem 1.6rem 2.5rem; text-align:center; }
+    .order-page-title { font-family:'Cormorant Garamond',serif; font-size:2.2rem; font-weight:600; color:var(--cream); margin-bottom:0.6rem; }
+    .order-page-title em { font-style:italic; color:var(--brown); }
+    .order-page-sub { color:var(--muted); font-size:0.85rem; font-weight:300; max-width:320px; margin:0 auto 2.2rem; line-height:1.7; }
+    .contact-list { display:flex; flex-direction:column; gap:0.8rem; max-width:340px; margin:0 auto; }
+    .contact-btn { display:flex; align-items:center; gap:0.9rem; background:#fff; border:1px solid var(--border); border-radius:6px; padding:0.9rem 1.1rem; text-decoration:none; color:var(--text); transition:all .25s; text-align:left; }
+    .contact-btn:hover { border-color:var(--brown-lt); box-shadow:0 8px 24px rgba(139,99,67,.1); transform:translateY(-2px); }
+    .contact-icon { width:38px; height:38px; border-radius:50%; display:flex; align-items:center; justify-content:center; flex-shrink:0; background:var(--surface); color:var(--brown); }
+    .contact-icon svg { width:18px; height:18px; }
+    .contact-name { font-family:'Cormorant Garamond',serif; font-size:1.1rem; font-weight:600; color:var(--cream); }
+    .contact-sub { font-family:'DM Mono',monospace; font-size:0.62rem; color:var(--muted); letter-spacing:0.5px; margin-top:0.15rem; }
+
+    /* Account page */
+    .account-page-section { padding:3.2rem 1.6rem 2.5rem; }
+    .account-card { max-width:360px; margin:0 auto; }
+    .account-greeting { text-align:center; font-family:'Cormorant Garamond',serif; font-size:1.6rem; color:var(--cream); margin-bottom:1.8rem; }
+    .account-greeting em { font-style:italic; color:var(--brown); }
+    .field-group { margin-bottom:1.1rem; }
+    .field-label { display:block; font-family:'DM Mono',monospace; font-size:0.62rem; color:var(--muted); letter-spacing:2px; text-transform:uppercase; margin-bottom:0.5rem; }
+    .field-input { width:100%; border:1px solid var(--border-lt); border-radius:4px; padding:0.75rem 0.9rem; font-family:'DM Sans',sans-serif; font-size:0.9rem; color:var(--text); background:#fff; outline:none; transition:border-color .2s; }
+    .field-input:focus { border-color:var(--brown); }
+    .account-save-btn { width:100%; background:var(--brown); color:#fff; border:none; border-radius:4px; padding:0.85rem; font-family:'DM Mono',monospace; font-size:0.7rem; font-weight:500; letter-spacing:1.5px; text-transform:uppercase; cursor:pointer; margin-top:0.4rem; transition:background .25s; }
+    .account-save-btn:hover { background:var(--brown-lt); }
+    .account-status { text-align:center; font-family:'DM Mono',monospace; font-size:0.65rem; color:var(--brown); letter-spacing:1px; margin-top:1rem; min-height:1em; }
+  </style>
+</head>
+<body>
+
+<div class="welcome-overlay" id="welcomeOverlay">
+  <div class="welcome-card">
+    <button class="welcome-close" data-action="close-welcome">✕</button>
+    <div class="welcome-eyebrow">Karachi · Est. 2024</div>
+    <div class="welcome-title">Welcome to<br><em>3hriftedshoes</em></div>
+    <p class="welcome-sub">Curated pre-loved footwear — real brands, honest prices. Have a look around!</p>
+    <button class="welcome-btn" data-action="close-welcome">Start Shopping</button>
+  </div>
+</div>
+
+<nav>
+  <div class="logo"><span>3</span>hriftedshoes</div>
+  <div class="nav-right">
+    <div class="nav-dot"></div>
+    <div class="nav-label">Open</div>
+  </div>
+</nav>
+
+<div class="page active" id="page-home">
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">Karachi · Est. 2024</div>
+    <h1>Curated.<em>Pre-loved.</em></h1>
+    <p class="hero-sub">Premium thrifted footwear — real brands, real quality, at honest prices. No replicas, no compromise.</p>
+  </div>
+  <img class="hero-shoe" src="https://i.ibb.co/Mx5xBZZS/IMG-20260622-010750-720.jpg" alt="Featured Shoe">
+  <div class="hero-stats">
+    <div class="stat">
+      <div class="stat-num">100%</div><div class="stat-label">Original</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">Fast</div><div class="stat-label">Delivery</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">All</div><div class="stat-label">Top Brands</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">Trusted</div><div class="stat-label">Seller</div>
+    </div>
+  </div>
+</section>
+
+<div class="trust-strip">
+  <div class="trust-item">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+    <span>100% Original</span>
+  </div>
+  <div class="trust-item">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+    <span>No Replicas</span>
+  </div>
+  <div class="trust-item">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+    <span>Karachi Based</span>
+  </div>
+  <div class="trust-item">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+    <span>Cash on Delivery</span>
+  </div>
+  <div class="trust-item">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+    <span>Easy Exchange</span>
+  </div>
+</div>
+
+<div class="marquee-wrap">
+  <div class="marquee">
+    <span class="acc">Nike</span><span>·</span><span>Adidas</span><span>·</span><span class="acc">Jordan</span><span>·</span><span>Puma</span><span>·</span><span>Converse</span><span>·</span><span class="acc">New Balance</span><span>·</span><span>Vans</span><span>·</span><span>Clarks</span><span>·</span><span class="acc">Dr. Martens</span><span>·</span><span>Reebok</span><span>·</span>
+    <span class="acc">Nike</span><span>·</span><span>Adidas</span><span>·</span><span class="acc">Jordan</span><span>·</span><span>Puma</span><span>·</span><span>Converse</span><span>·</span><span class="acc">New Balance</span><span>·</span><span>Vans</span><span>·</span><span>Clarks</span><span>·</span><span class="acc">Dr. Martens</span><span>·</span><span>Reebok</span><span>·</span>
+  </div>
+</div>
+
+<!-- WHY CHOOSE US -->
+<section class="why-section">
+  <div class="section-eyebrow">Our Promise</div>
+  <div class="section-title">Why Shop<br>With <em>Us?</em></div>
+  <div class="why-list">
+    <div class="why-item">
+      <div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg></div>
+      <div class="why-text"><strong>100% Original Shoes</strong><small>No replicas, ever. Every pair is authenticated before listing.</small></div>
+    </div>
+    <div class="why-item">
+      <div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="M11 8v3l2 2"/></svg></div>
+      <div class="why-text"><strong>Carefully Inspected</strong><small>Each shoe is checked for condition and graded honestly.</small></div>
+    </div>
+    <div class="why-item">
+      <div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></div>
+      <div class="why-text"><strong>Affordable Prices</strong><small>Premium brands at a fraction of retail — honest pricing always.</small></div>
+    </div>
+    <div class="why-item">
+      <div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 5v3h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div>
+      <div class="why-text"><strong>Fast Delivery Across Pakistan</strong><small>Orders dispatched within 24 hours. Karachi same-day available.</small></div>
+    </div>
+    <div class="why-item">
+      <div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg></div>
+      <div class="why-text"><strong>New Stock Every Week</strong><small>Fresh drops every week — follow us on Instagram to stay updated.</small></div>
+    </div>
+  </div>
+</section>
+
+<!-- LATEST ARRIVALS -->
+<section class="arrivals-section">
+  <div class="arrivals-head">
+    <div class="section-eyebrow">Just Dropped</div>
+    <div class="section-title">Latest <em>Arrivals</em></div>
+  </div>
+  <div class="arrivals-scroll">
+    <div class="arrival-card" onclick="document.querySelector('[data-action=show-page][data-page=categories]').click()">
+      <img class="arrival-img" src="https://i.ibb.co/dsn9h38W/3hriftedshoes-14050406-164706098.jpg" alt="Adidas Campus 00S">
+      <div class="arrival-body">
+        <div class="arrival-brand">Adidas</div>
+        <div class="arrival-name">Campus 00S</div>
+        <div class="arrival-price">Rs. 2,300</div>
+      </div>
+    </div>
+    <div class="arrival-card" onclick="document.querySelector('[data-action=show-page][data-page=categories]').click()">
+      <img class="arrival-img" src="https://i.ibb.co/P2Hnq8G/IMG-20260630-164700-612.jpg" alt="Adidas Campus Wonder White">
+      <div class="arrival-body">
+        <div class="arrival-brand">Adidas</div>
+        <div class="arrival-name">Campus Wonder White</div>
+        <div class="arrival-price">Rs. 1,700</div>
+      </div>
+    </div>
+    <div class="arrival-card" onclick="document.querySelector('[data-action=show-page][data-page=categories]').click()">
+      <img class="arrival-img" src="https://i.ibb.co/5gRGzQsN/IMG-20260629-103958-487.jpg" alt="Puma Graviton Pro">
+      <div class="arrival-body">
+        <div class="arrival-brand">Puma</div>
+        <div class="arrival-name">Graviton Pro</div>
+        <div class="arrival-price">Rs. 1,600</div>
+      </div>
+    </div>
+    <div class="arrival-card" onclick="document.querySelector('[data-action=show-page][data-page=categories]').click()">
+      <img class="arrival-img" src="https://i.ibb.co/9k2XwznL/IMG-20260630-164704-341.jpg" alt="Nike Revolution">
+      <div class="arrival-body">
+        <div class="arrival-brand">Nike</div>
+        <div class="arrival-name">Revolution</div>
+        <div class="arrival-price">Rs. 1,400</div>
+      </div>
+    </div>
+    <div class="arrival-card" onclick="document.querySelector('[data-action=show-page][data-page=categories]').click()">
+      <img class="arrival-img" src="https://i.ibb.co/m5vYp0gk/IMG-20260630-164646-133.jpg" alt="Puma Caven 2.0">
+      <div class="arrival-body">
+        <div class="arrival-brand">Puma</div>
+        <div class="arrival-name">Caven 2.0</div>
+        <div class="arrival-price">Rs. 1,500</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CUSTOMER REVIEWS -->
+<section class="reviews-section">
+  <div class="section-eyebrow">Happy Customers</div>
+  <div class="section-title">What They <em>Say</em></div>
+  <div class="review-cards">
+    <div class="review-card">
+      <div class="review-stars">⭐⭐⭐⭐⭐</div>
+      <p class="review-text">"Bilkul original Nike mili, condition bhi exactly waisi thi jaise describe ki gayi thi. Delivery bhi super fast. Definitely ordering again!"</p>
+      <div class="review-author">— Ahmed K., Karachi</div>
+    </div>
+    <div class="review-card">
+      <div class="review-stars">⭐⭐⭐⭐⭐</div>
+      <p class="review-text">"Adidas Campus 00S liya — brand new jaisi condition. Price bhi bohot reasonable tha. Trusted seller, bhai logo ko recommend karunga."</p>
+      <div class="review-author">— Faisal R., DHA</div>
+    </div>
+    <div class="review-card">
+      <div class="review-stars">⭐⭐⭐⭐☆</div>
+      <p class="review-text">"WhatsApp pe quick reply aaya, shoe ki extra photos bhi bheji. Overall great experience, stock aur badhao please!"</p>
+      <div class="review-author">— Sana M., Gulshan</div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section">
+  <div class="section-eyebrow">Got Questions?</div>
+  <div class="section-title">Frequently <em>Asked</em></div>
+  <div class="faq-list">
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        <span class="faq-q-text">Kya ye shoes 100% original hain?</span>
+        <span class="faq-chevron">▾</span>
+      </button>
+      <div class="faq-a">Haan, bilkul. Hum sirf authenticated pre-loved shoes list karte hain. Koi replica ya fake item kabhi nahi. Har shoe personally inspect ki jaati hai.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        <span class="faq-q-text">Delivery kitne din mein hogi?</span>
+        <span class="faq-chevron">▾</span>
+      </button>
+      <div class="faq-a">Karachi mein 1–2 din. Pakistan ke baaki shehron mein 3–5 working days. Order WhatsApp pe place karo aur hum dispatch time confirm karenge.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        <span class="faq-q-text">Cash on Delivery available hai?</span>
+        <span class="faq-chevron">▾</span>
+      </button>
+      <div class="faq-a">Haan, COD available hai selected areas mein. WhatsApp pe apna location bhejo aur hum confirm karenge. Bank transfer bhi accept karte hain.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        <span class="faq-q-text">Size sahi nahi aaya toh kya hoga?</span>
+        <span class="faq-chevron">▾</span>
+      </button>
+      <div class="faq-a">Hum easy exchange offer karte hain agar size issue ho. Shoes unworn condition mein return karo aur hum available stock se exchange karenge.</div>
+    </div>
+  </div>
+</section>
+
+</div>
+<!-- /page-home -->
+
+<div class="page" id="page-categories">
+<div class="search-bar-wrap">
+  <div class="search-icon">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+  </div>
+  <input class="search-input" id="searchInput" type="text" placeholder="Search by brand or name…" oninput="searchCards(this.value)">
+</div>
+<div class="filter-bar">
+  <button class="filter-btn active" data-action="filter" data-filter="all">All</button>
+  <button class="filter-btn" data-action="filter" data-filter="nike">Nike</button>
+  <button class="filter-btn" data-action="filter" data-filter="adidas">Adidas</button>
+  <button class="filter-btn" data-action="filter" data-filter="puma">Puma</button>
+  <button class="filter-btn" data-action="filter" data-filter="new-balance">New Balance</button>
+  <button class="filter-btn" data-action="filter" data-filter="under2000">Under Rs. 2,000</button>
+</div>
+
+<section class="grid-section">
+  <div class="section-label">Available now</div>
+  <div class="grid" id="shoe-grid">
+
+    <!-- CARD 1 -->
+    <div class="card" data-type="sneakers" data-brand="adidas" data-price="2300">
+      <div class="card-gallery" id="g1">
+        <div class="badge new">New In</div>
+        <img class="active" src="https://i.ibb.co/dsn9h38W/3hriftedshoes-14050406-164706098.jpg" alt="View 1" data-action="open-lightbox">
+        <img src="https://i.ibb.co/v4C8bffP/3hriftedshoes-14050406-164715245.jpg" alt="View 2" data-action="open-lightbox">
+        <img src="https://i.ibb.co/hRMPZkR0/3hriftedshoes-14050406-164721808.jpg" alt="View 3" data-action="open-lightbox">
+        <div class="gallery-dots"><span class="active"></span><span></span><span></span></div>
+        <div class="gallery-arrow prev" data-action="slide" data-gallery="g1" data-dir="-1">‹</div>
+        <div class="gallery-arrow next" data-action="slide" data-gallery="g1" data-dir="1">›</div>
+      </div>
+      <div class="card-body">
+        <div class="card-brand">Adidas</div>
+        <div class="card-name">Campus 00S</div>
+        <div class="card-meta"><div class="card-price">Rs. 2,300</div><div class="card-size">UK 7</div></div>
+        <div class="card-stars">⭐⭐⭐⭐⭐ <span class="card-stars-label">9/10</span></div>
+        <div class="card-tags">
+          <span class="card-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Original</span>
+          <span class="card-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>UK Size</span>
+          <span class="card-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Inspected</span>
+        </div>
+        <a class="order-btn" href="https://wa.me/923257583844?text=Hi!%20Adidas%20Campus%2000s%20chahiye" target="_blank">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.122 1.532 5.85L0 24l6.335-1.654A11.955 11.955 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.373l-.36-.213-3.76.982 1.004-3.658-.233-.375A9.818 9.818 0 112 12 9.818 9.818 0 0112 21.818z"/></svg>
+          Order via WhatsApp
+        </a>
+      </div>
+    </div>
+
+    <!-- CARD 2 -->
+    <div class="card" data-type="sneakers" data-brand="other" data-price="1500">
+      <div class="card-gallery" id="g2">
+        <div class="badge hot">Hot</div>
+        <img class="active" src="https://i.ibb.co/Mx5xBZZS/IMG-20260622-010750-720.jpg" alt="View 1" data-action="open-lightbox">
+        <img src="https://i.ibb.co/nNKzS0P6/IMG-20260622-011002-091.jpg" alt="View 2" data-action="open-lightbox">
+        <img src="https://i.ibb.co/LyhVs0q/IMG-20260622-011012-276.jpg" alt="View 3" data-action="open-lightbox">
+        <div class="gallery-dots"><span class="active"></span><span></span><span></span></div>
+        <div class="gallery-arrow prev" data-action="slide" data-gallery="g2" data-dir="-1">‹</div>
+        <div class="gallery-arrow next" data-action="slide" data-gallery="g2" data-dir="1">›</div>
+      </div>
+      <div class="card-body">
+        <div class="card-brand">WCG</div>
+        <div class="card-name">Walking Sneakers</div>
+        <div class="card-meta"><div class="card-price">Rs. 1,500</div><div class="card-size">UK 7</div></div>
+        <div class="card-stars">⭐⭐⭐⭐☆ <span class="card-stars-label">Lightly Used</span></div>
+        <div class="card-tags">
+          <span class="card-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Original</span>
+          <span class="card-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>UK Size</span>
+          <span class="card-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Inspected</span>
+        </div>
+        <a class="order-btn" href="https://wa.me/923257583844?text=Hi!%20WCG%20Walking%20Sneakers%20chahiye" target="_blank">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.122 1.532 5.85L0 24l6.335-1.654A11.955 11.955 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.373l-.36-.213-3.76.982 1.004-3.658-.233-.375A9.818 9.818 0 112 12 9.818 9.818 0 0112 21.818z"/></svg>
+          Order via WhatsApp
+        </a>
+      </div>
+    </div>
+
+    <!-- CARD 3 -->
+    <div class="card" data-type="sneakers" data-brand="other" data-price="1800">
+      <div class="card-gallery" id="g3">
+        <div class="badge new">New In</div>
+        <img class="active" src="https://i.ibb.co/qVjkXsB/IMG-20260628-132923-748.jpg" alt="View 1" data-action="open-lightbox">
+        <img src="https://i.ibb.co/GQdDntjB/IMG-20260628-132923-749.jpg" alt="View 2" data-action="open-lightbox">
+        <img src="https://i.ibb.co/ZRcLR1Bf/IMG-20260628-132547-730.jpg" alt="View 3" data-action="open-lightbox">
+        <div class="gallery-dots"><span class="active"></span><span></span><span></span></div>
+        <div class="gallery-arrow prev" data-action="slide" data-gallery="g3" data-dir="-1">‹</div>
+        <div class="gallery-arrow next" data-action="slide" data-gallery="g3" data-dir="1">›</div>
+      </div>
+      <div class="card-body">
+        <div class="card-brand">KAPPA BRAND</div>
+        <div class="card-name">Running Sneakers</div>
+        <div class="card-meta"><div class="card-price">Rs. 1,800</div><div class="card-size">UK 9</div></div>
+        <div class="card-stars">⭐⭐⭐⭐⭐ <span class="card-stars-label">Excellent</span></div>
+        <div class="card-tags">
+          <span class="card-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Original</span>
+          <span class="card-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>UK Size</span>
+          <span class="card-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Inspected</span>
+        </div>
+        <a class="order-btn" href="https://wa.me/923257583844?text=Hi!%20Kappa%20Brand%20Running%20Sneakers%20chahiye" target="_blank">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.122 1.532 5.85L0 24l6.335-1.654A11.955 11.955 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.373l-.36-.213-3.76.982 1.004-3.658-.233-.375A9.818 9.818 0 112 12 9.818 9.818 0 0112 21.818z"/></svg>
+          Order via WhatsApp
+        </a>
+      </div>
+    </div>
+
+    <!-- CARD 4 -->
+    <div class="card" data-type="sneakers" data-brand="puma" data-price="1600">
+      <div class="card-gallery" id="g4">
+        <div class="badge new">New In</div>
+        <img class="active" src="https://i.ibb.co/5gRGzQsN/IMG-20260629-103958-487.jpg" alt="View 1" data-action="open-lightbox">
+        <img src="https://i.ibb.co/C35ccTZL/IMG-20260629-104241-462.jpg" alt="View 2" data-action="open-lightbox">
+        <img src="https://i.ibb.co/Z6mrnPyX/IMG-20260629-103958-486.jpg" alt="View 3" data-action="open-lightbox">
+        <div class="gallery-dots"><span class="active"></span><span></span><span></span></div>
+        <div class="gallery-arrow prev" data-action="slide" data-gallery="g4" data-dir="-1">‹</div>
+        <div class="gallery-arrow next" data-action="slide" data-gallery="g4" data-dir="1">›</div>
+      </div>
+      <div class="card-body">
+        <div class="card-brand">Puma</div>
+        <div class="card-name">Graviton Pro</div>
+        <div class="card-meta"><div class="card-price">Rs. 1,600</div><div class="card-size">UK 8</div></div>
+        <div class="card-stars">⭐⭐⭐⭐⭐ <span class="card-stars-label">9/10</span></div>
+        <div class="card-tags">
+          <span class="card-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Original</span>
+          <span class="card-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>UK Size</span>
+          <span class="card-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Inspected</span>
+        </div>
+        <a class="order-btn" href="https://wa.me/923257583844?text=Hi!%20Puma%20Graviton%20Pro%20chahiye" target="_blank">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.122 1.532 5.85L0 24l6.335-1.654A11.955 11.955 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.373l-.36-.213-3.76.982 1.004-3.658-.233-.375A9.818 9.818 0 112 12 9.818 9.818 0 0112 21.818z"/></svg>
+          Order via WhatsApp
+        </a>
+      </div>
+    </div>
+
+    <!-- CARD 5 -->
+    <div class="card" data-type="sneakers" data-brand="other" data-price="900">
+      <div class="card-gallery" id="g5">
+        <div class="badge hot">Hot</div>
+        <img class="active" src="https://i.ibb.co/mdzWwQt/IMG-20260622-011236-799.jpg" alt="View 1" data-action="open-lightbox">
+        <img src="https://i.ibb.co/hFzC6K8V/IMG-20260622-011241-504.jpg" alt="View 2" data-action="open-lightbox">
+        <img src="https://i.ibb.co/4ZzkYNCn/IMG-20260622-010732-223.jpg" alt="View 3" data-action="open-lightbox">
+        <div class="gallery-dots"><span class="active"></span><span></span><span></span></div>
+        <div class="gallery-arrow prev" data-action="slide" data-gallery="g5" data-dir="-1">‹</div>
+        <div class="gallery-arrow next" data-action="slide" data-gallery="g5" data-dir="1">›</div>
+      </div>
+      <div class="card-body">
+        <div class="card-brand">RJ</div>
+        <div class="card-name">Clean White Casual</div>
+        <div class="card-meta"><div class="card-price">Rs. 900</div><div class="card-size">UK 7</div></div>
+        <div class="card-stars">⭐⭐⭐⭐☆ <span class="card-stars-label">Lightly Used</span></div>
+        <div class="card-tags">
+          <span class="card-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Original</span>
+          <span class="card-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>UK Size</span>
+          <span class="card-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Inspected</span>
+        </div>
+        <a class="order-btn" href="https://wa.me/923257583844?text=Hi!%20Horsebit%20Black%20Leather%20chahiye" target="_blank">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.122 1.532 5.85L0 24l6.335-1.654A11.955 11.955 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.373l-.36-.213-3.76.982 1.004-3.658-.233-.375A9.818 9.818 0 112 12 9.818 9.818 0 0112 21.818z"/></svg>
+          Order via WhatsApp
+        </a>
+      </div>
+    </div>
+
+    <!-- CARD 6 -->
+    <div class="card" data-type="sneakers" data-brand="adidas" data-price="2300">
+      <div class="card-gallery" id="g6">
+        <div class="badge new">New In</div>
+        <img class="active" src="https://i.ibb.co/7NbDMtgj/IMG-20260622-011113-412.jpg" alt="View 1" data-action="open-lightbox">
+        <img src="https://i.ibb.co/FkD1d3vp/IMG-20260622-011425-353.jpg" alt="View 2" data-action="open-lightbox">
+        <img src="https://i.ibb.co/gMVB8yg5/IMG-20260622-011159-827.jpg" alt="View 3" data-action="open-lightbox">
+        <div class="gallery-dots"><span class="active"></span><span></span><span></span></div>
+        <div class="gallery-arrow prev" data-action="slide" data-gallery="g6" data-dir="-1">‹</div>
+        <div class="gallery-arrow next" data-action="slide" data-gallery="g6" data-dir="1">›</div>
+      </div>
+      <div class="card-body">
+        <div class="card-brand">Adidas</div>
+        <div class="card-name">Adidas Gazelle</div>
+        <div class="card-meta"><div class="card-price">Rs. 2,300</div><div class="card-size">UK 8</div></div>
+        <div class="card-stars">⭐⭐⭐⭐⭐ <span class="card-stars-label">Excellent</span></div>
+        <div class="card-tags">
+          <span class="card-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Original</span>
+          <span class="card-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>UK Size</span>
+          <span class="card-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Inspected</span>
+        </div>
+        <a class="order-btn" href="https://wa.me/923257583844?text=Hey!%20Adidas%20Gazelle%20chahiye" target="_blank">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.122 1.532 5.85L0 24l6.335-1.654A11.955 11.955 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.373l-.36-.213-3.76.982 1.004-3.658-.233-.375A9.818 9.818 0 112 12 9.818 9.818 0 0112 21.818z"/></svg>
+          Order via WhatsApp
+        </a>
+      </div>
+    </div>
+
+    <!-- CARD 7 (placeholder) -->
+    <div class="card" data-type="sneakers" data-brand="other" data-price="1999">
+      <div class="card-gallery" id="g7">
+        <div class="badge new">New In</div>
+        <img class="active" src="https://i.ibb.co/99jXZdqp/IMG-20260622-011241-507.jpg" alt="View 1" data-action="open-lightbox">
+        <img src="https://i.ibb.co/jkf5FSK2/IMG-20260622-011241-508.jpg" alt="View 2" data-action="open-lightbox">
+        <img src="https://i.ibb.co/Nn6ywh8K/IMG-20260622-011241-506.jpg" alt="View 3" data-action="open-lightbox">
+        <div class="gallery-dots"><span class="active"></span><span></span><span></span></div>
+        <div class="gallery-arrow prev" data-action="slide" data-gallery="g7" data-dir="-1">‹</div>
+        <div class="gallery-arrow next" data-action="slide" data-gallery="g7" data-dir="1">›</div>
+      </div>
+      <div class="card-body">
+        <div class="card-brand">RS</div>
+        <div class="card-name">Fashion Sneakers</div>
+        <div class="card-meta"><div class="card-price">Rs. 1,999</div><div class="card-size">UK 7</div></div>
+        <div class="card-stars">⭐⭐⭐⭐☆ <span class="card-stars-label">Lightly Used</span></div>
+        <div class="card-tags">
+          <span class="card-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Original</span>
+          <span class="card-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>UK Size</span>
+          <span class="card-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Inspected</span>
+        </div>
+        <a class="order-btn" href="https://wa.me/923257583844?text=Hi!%20RS%20Fashion%20Sneakers%20chahiye" target="_blank">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.122 1.532 5.85L0 24l6.335-1.654A11.955 11.955 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.373l-.36-.213-3.76.982 1.004-3.658-.233-.375A9.818 9.818 0 112 12 9.818 9.818 0 0112 21.818z"/></svg>
+          Order via WhatsApp
+        </a>
+      </div>
+    </div>
+
+    <!-- CARD 8 (placeholder) -->
+    <div class="card" data-type="sneakers" data-brand="adidas" data-price="1700">
+      <div class="card-gallery" id="g8">
+        <div class="badge hot">Hot</div>
+        <img class="active" src="https://i.ibb.co/P2Hnq8G/IMG-20260630-164700-612.jpg" alt="View 1" data-action="open-lightbox">
+        <img src="https://i.ibb.co/6x99BWZ/IMG-20260630-164700-677.jpg" alt="View 2" data-action="open-lightbox">
+        <img src="https://i.ibb.co/wFzQqccW/IMG-20260701-125134-956.jpg" alt="View 3" data-action="open-lightbox">
+        <div class="gallery-dots"><span class="active"></span><span></span><span></span></div>
+        <div class="gallery-arrow prev" data-action="slide" data-gallery="g8" data-dir="-1">‹</div>
+        <div class="gallery-arrow next" data-action="slide" data-gallery="g8" data-dir="1">›</div>
+      </div>
+      <div class="card-body">
+        <div class="card-brand">Adidas</div>
+        <div class="card-name">Campus 00s Wonder White</div>
+        <div class="card-meta"><div class="card-price">Rs. 1,700</div><div class="card-size">UK 7</div></div>
+        <div class="card-stars">⭐⭐⭐⭐⭐ <span class="card-stars-label">9/10</span></div>
+        <div class="card-tags">
+          <span class="card-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Original</span>
+          <span class="card-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>UK Size</span>
+          <span class="card-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Inspected</span>
+        </div>
+        <a class="order-btn" href="https://wa.me/923257583844?text=Hi!%20Adidas%20Wonder%20White%20chahiye" target="_blank">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.122 1.532 5.85L0 24l6.335-1.654A11.955 11.955 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.373l-.36-.213-3.76.982 1.004-3.658-.233-.375A9.818 9.818 0 112 12 9.818 9.818 0 0112 21.818z"/></svg>
+          Order via WhatsApp
+        </a>
+      </div>
+    </div>
+
+    <!-- CARD 9 (placeholder) -->
+    <div class="card" data-type="sneakers" data-brand="nike" data-price="1400">
+      <div class="card-gallery" id="g9">
+        <div class="badge new">New In</div>
+        <img class="active" src="https://i.ibb.co/9k2XwznL/IMG-20260630-164704-341.jpg" alt="View 1" data-action="open-lightbox">
+        <img src="https://i.ibb.co/8Lqcsdnb/IMG-20260630-164704-342.jpg" alt="View 2" data-action="open-lightbox">
+        <img src="https://i.ibb.co/fzxyh9CK/IMG-20260630-164704-343.jpg" alt="View 3" data-action="open-lightbox">
+        <div class="gallery-dots"><span class="active"></span><span></span><span></span></div>
+        <div class="gallery-arrow prev" data-action="slide" data-gallery="g9" data-dir="-1">‹</div>
+        <div class="gallery-arrow next" data-action="slide" data-gallery="g9" data-dir="1">›</div>
+      </div>
+      <div class="card-body">
+        <div class="card-brand">Nike</div>
+        <div class="card-name">Revolution</div>
+        <div class="card-meta"><div class="card-price">Rs. 1,400</div><div class="card-size">UK 8</div></div>
+        <div class="card-stars">⭐⭐⭐⭐⭐ <span class="card-stars-label">Excellent</span></div>
+        <div class="card-tags">
+          <span class="card-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Original</span>
+          <span class="card-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>UK Size</span>
+          <span class="card-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Inspected</span>
+        </div>
+        <a class="order-btn" href="https://wa.me/923257583844?text=Hi!%20Nike%20Revolution%20chahiye" target="_blank">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.122 1.532 5.85L0 24l6.335-1.654A11.955 11.955 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.373l-.36-.213-3.76.982 1.004-3.658-.233-.375A9.818 9.818 0 112 12 9.818 9.818 0 0112 21.818z"/></svg>
+          Order via WhatsApp
+        </a>
+      </div>
+    </div>
+
+    <!-- CARD 10 (placeholder) -->
+    <div class="card" data-type="sneakers" data-brand="puma" data-price="1500">
+      <div class="card-gallery" id="g10">
+        <div class="badge hot">Hot</div>
+        <img class="active" src="https://i.ibb.co/mrTvCWB4/IMG-20260630-164646-130.jpg" alt="View 1" data-action="open-lightbox">
+        <img src="https://i.ibb.co/mr1kzLB4/IMG-20260630-164646-131.jpg" alt="View 2" data-action="open-lightbox">
+        <img src="https://i.ibb.co/m5vYp0gk/IMG-20260630-164646-133.jpg" alt="View 3" data-action="open-lightbox">
+        <div class="gallery-dots"><span class="active"></span><span></span><span></span></div>
+        <div class="gallery-arrow prev" data-action="slide" data-gallery="g10" data-dir="-1">‹</div>
+        <div class="gallery-arrow next" data-action="slide" data-gallery="g10" data-dir="1">›</div>
+      </div>
+      <div class="card-body">
+        <div class="card-brand">Puma</div>
+        <div class="card-name">Caven 2.0</div>
+        <div class="card-meta"><div class="card-price">Rs. 1,500</div><div class="card-size">UK 7</div></div>
+        <div class="card-stars">⭐⭐⭐⭐☆ <span class="card-stars-label">Lightly Used</span></div>
+        <div class="card-tags">
+          <span class="card-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Original</span>
+          <span class="card-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>UK Size</span>
+          <span class="card-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Inspected</span>
+        </div>
+        <a class="order-btn" href="https://wa.me/923257583844?text=Hi!%20Puma%20Caven%202.0%20chahiye" target="_blank">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.122 1.532 5.85L0 24l6.335-1.654A11.955 11.955 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.373l-.36-.213-3.76.982 1.004-3.658-.233-.375A9.818 9.818 0 112 12 9.818 9.818 0 0112 21.818z"/></svg>
+          Order via WhatsApp
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+</div>
+<!-- /page-categories -->
+
+<div class="page" id="page-order">
+  <section class="order-page-section">
+    <div class="section-label" style="justify-content:center">Get in touch</div>
+    <div class="order-page-title">Place Your <em>Order</em></div>
+    <p class="order-page-sub">Pick whichever platform suits you best — our team replies fast and helps you complete your order.</p>
+    <div class="contact-list">
+      <a class="contact-btn" href="mailto:3hriftedshoes@gmail.com?subject=Order%20Inquiry">
+        <div class="contact-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+        </div>
+        <div>
+          <div class="contact-name">Email</div>
+          <div class="contact-sub">3hriftedshoes@gmail.com</div>
+        </div>
+      </a>
+      <a class="contact-btn" href="https://wa.me/923257583844?text=Hi!%20I%20want%20to%20place%20an%20order" target="_blank">
+        <div class="contact-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.122 1.532 5.85L0 24l6.335-1.654A11.955 11.955 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.373l-.36-.213-3.76.982 1.004-3.658-.233-.375A9.818 9.818 0 112 12 9.818 9.818 0 0112 21.818z"/></svg>
+        </div>
+        <div>
+          <div class="contact-name">WhatsApp</div>
+          <div class="contact-sub">+92 325 7583844</div>
+        </div>
+      </a>
+      <a class="contact-btn" href="https://instagram.com/3hriftedshoes" target="_blank">
+        <div class="contact-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+        </div>
+        <div>
+          <div class="contact-name">Instagram</div>
+          <div class="contact-sub">@3hriftedshoes</div>
+        </div>
+      </a>
+    </div>
+  </section>
+</div>
+<!-- /page-order -->
+
+<div class="page" id="page-account">
+  <section class="account-page-section">
+    <div class="account-card">
+      <div class="account-greeting" id="accountGreeting">Your <em>Account</em></div>
+      <div class="field-group">
+        <label class="field-label">Name</label>
+        <input class="field-input" id="accName" type="text" placeholder="Your full name">
+      </div>
+      <div class="field-group">
+        <label class="field-label">Username</label>
+        <input class="field-input" id="accUsername" type="text" placeholder="Pick a username">
+      </div>
+      <button class="account-save-btn" data-action="save-account">Save</button>
+      <div class="account-status" id="accountStatus"></div>
+    </div>
+  </section>
+</div>
+<!-- /page-account -->
+
+<footer style="margin-bottom:0;">
+  <div class="footer-logo"><span>3</span>hriftedshoes</div>
+  <div class="footer-divider"></div>
+  <div class="footer-sub">Premium thrifted footwear · Karachi, Pakistan<br>All items pre-loved & authenticated</div>
+  <div class="footer-divider"></div>
+  <div class="footer-wa">⬡ WhatsApp orders only</div>
+</footer>
+
+<nav class="bottom-nav">
+  <button class="bn-item active" data-action="show-page" data-page="home">
+    <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/></svg>
+    <span>Home</span>
+  </button>
+  <button class="bn-item" data-action="show-page" data-page="categories">
+    <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="4.5" cy="6" r="1"/><circle cx="4.5" cy="12" r="1"/><circle cx="4.5" cy="18" r="1"/><path d="M9 6h11M9 12h11M9 18h11"/></svg>
+    <span>Categories</span>
+  </button>
+  <button class="bn-item" data-action="show-page" data-page="order">
+    <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/><path d="M2 3h2l2.6 12.4a2 2 0 0 0 2 1.6h8.8a2 2 0 0 0 2-1.6L21 7H6"/></svg>
+    <span>Order</span>
+  </button>
+  <button class="bn-item" data-action="show-page" data-page="account">
+    <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.4"/><path d="M5 20c0-3.6 3.1-6.4 7-6.4s7 2.8 7 6.4"/></svg>
+    <span>Account</span>
+  </button>
+</nav>
+
+<div class="lightbox" id="lightbox" data-action="close-lightbox">
+  <button class="lightbox-close">✕</button>
+  <img id="lightbox-img" src="" alt="">
+</div>
+
+<script>
+  function changeSlide(galleryId, dir) {
+    const gallery = document.getElementById(galleryId);
+    if (!gallery) return;
+    const imgs = [...gallery.querySelectorAll('img')];
+    const dots = gallery.querySelectorAll('.gallery-dots span');
+    if (imgs.length < 2) return;
+    let cur = imgs.findIndex(i => i.classList.contains('active'));
+    if (cur < 0) cur = 0;
+    imgs[cur].classList.remove('active');
+    dots[cur]?.classList.remove('active');
+    cur = (cur + dir + imgs.length) % imgs.length;
+    imgs[cur].classList.add('active');
+    dots[cur]?.classList.add('active');
+  }
+
+  let activeFilter = 'all';
+  let activeSearch = '';
+
+  function applyFilters() {
+    document.querySelectorAll('.card').forEach(card => {
+      const brand = card.dataset.brand || '';
+      const price = parseInt(card.dataset.price || '9999', 10);
+      const name = (card.querySelector('.card-name')?.textContent || '').toLowerCase();
+      const brandText = (card.querySelector('.card-brand')?.textContent || '').toLowerCase();
+
+      let filterMatch = false;
+      if (activeFilter === 'all') filterMatch = true;
+      else if (activeFilter === 'under2000') filterMatch = price < 2000;
+      else filterMatch = brand === activeFilter;
+
+      const searchMatch = activeSearch === '' ||
+        brandText.includes(activeSearch) ||
+        name.includes(activeSearch);
+
+      card.style.display = (filterMatch && searchMatch) ? 'block' : 'none';
+    });
+  }
+
+  function filterCards(type, btn) {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    activeFilter = type;
+    applyFilters();
+  }
+
+  function searchCards(query) {
+    activeSearch = query.toLowerCase().trim();
+    applyFilters();
+  }
+
+  function closeWelcome() {
+    const overlay = document.getElementById('welcomeOverlay');
+    if (!overlay) return;
+    overlay.classList.remove('show');
+    setTimeout(() => overlay.classList.add('hide'), 350);
+  }
+
+  function openLightbox(src) {
+    document.getElementById('lightbox-img').src = src;
+    document.getElementById('lightbox').classList.add('open');
+  }
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('open');
+  }
+
+  // ----- Bottom nav page switching -----
+  function showPage(name, btn) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    const target = document.getElementById('page-' + name);
+    if (target) target.classList.add('active');
+    document.querySelectorAll('.bn-item').forEach(b => b.classList.remove('active'));
+    if (btn) btn.classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'instant' });
+  }
+
+  // ----- Account: save/load name & username (in-memory, session only) -----
+  const accountStore = { name: '', username: '' };
+  function loadAccount() {
+    if (accountStore.name) document.getElementById('accName').value = accountStore.name;
+    if (accountStore.username) document.getElementById('accUsername').value = accountStore.username;
+    const greeting = document.getElementById('accountGreeting');
+    if (accountStore.name) {
+      greeting.innerHTML = 'Welcome back, <em>' + accountStore.name.split(' ')[0] + '</em>';
+    }
+  }
+  function saveAccount() {
+    const name = document.getElementById('accName').value.trim();
+    const username = document.getElementById('accUsername').value.trim();
+    const status = document.getElementById('accountStatus');
+    if (!name || !username) {
+      status.textContent = 'Please fill in both fields';
+      status.style.color = '#b03c3c';
+      return;
+    }
+    accountStore.name = name;
+    accountStore.username = username;
+    document.getElementById('accountGreeting').innerHTML = 'Welcome back, <em>' + name.split(' ')[0] + '</em>';
+    status.style.color = 'var(--brown)';
+    status.textContent = 'Saved ✓';
+    setTimeout(() => status.textContent = '', 2000);
+  }
+
+  // ----- Single delegated click handler for ALL data-action elements -----
+  document.addEventListener('click', function (e) {
+    const el = e.target.closest('[data-action]');
+    if (!el) return;
+    const action = el.dataset.action;
+
+    if (action === 'close-welcome') {
+      closeWelcome();
+    } else if (action === 'show-page') {
+      showPage(el.dataset.page, el);
+    } else if (action === 'filter') {
+      filterCards(el.dataset.filter, el);
+    } else if (action === 'slide') {
+      e.stopPropagation();
+      changeSlide(el.dataset.gallery, parseInt(el.dataset.dir, 10));
+    } else if (action === 'open-lightbox') {
+      openLightbox(el.src);
+    } else if (action === 'save-account') {
+      saveAccount();
+    }
+  });
+
+  // Click on welcome overlay backdrop (but not the card) closes it
+  document.getElementById('welcomeOverlay')?.addEventListener('click', (e) => {
+    if (e.target.id === 'welcomeOverlay') closeWelcome();
+  });
+  // Click on lightbox backdrop closes it
+  document.getElementById('lightbox')?.addEventListener('click', (e) => {
+    if (e.currentTarget === e.target || e.target.dataset.action === 'close-lightbox') closeLightbox();
+  });
+
+  // Auto-slide every 3s
+  ['g1','g2','g3','g4','g5','g6','g7','g8','g9','g10'].forEach(id => {
+    setInterval(() => changeSlide(id, 1), 3000 + Math.random()*1000);
+  });
+
+  // show all cards by default
+  document.querySelectorAll('.card').forEach(card => {
+    card.style.display = 'block';
+  });
+  loadAccount();
+
+  // Welcome popup — only on first visit
+  const overlay = document.getElementById('welcomeOverlay');
+  if (overlay && !localStorage.getItem('3hs_visited')) {
+    localStorage.setItem('3hs_visited', '1');
+    requestAnimationFrame(() => requestAnimationFrame(() => overlay.classList.add('show')));
+  } else if (overlay) {
+    overlay.classList.add('hide');
+  }
+
+  // FAQ accordion
+  function toggleFaq(btn) {
+    const item = btn.closest('.faq-item');
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  }
+</script>
+</body>
+</html>
