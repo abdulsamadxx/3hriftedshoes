@@ -1,0 +1,16 @@
+{
+  "name": "3hriftedshoes — Premium Thrifted Sneakers",
+  "short_name": "3hriftedshoes",
+  "description": "Authenticated, pre-loved sneakers from Nike, Adidas, Puma and more — Karachi, Pakistan.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#8B6343",
+  "icons": [
+    {
+      "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='18' fill='%238B6343'/%3E%3Ctext x='50' y='68' font-family='Georgia,serif' font-size='58' font-weight='600' fill='%23fff' text-anchor='middle'%3E3%3C/text%3E%3C/svg%3E",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
