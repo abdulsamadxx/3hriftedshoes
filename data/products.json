@@ -1,318 +1,325 @@
 [
   {
-    "id": "g1",
-    "brand": "Adidas",
-    "filterBrand": "adidas",
-    "name": "Campus 00S",
-    "price": 2300,
-    "size": "UK 7",
+    "id": "w1",
+    "brand": "Rolex",
+    "filterBrand": "icons",
+    "name": "Cosmograph Daytona",
+    "price": 27433000,
+    "size": "40mm",
     "stars": 5,
-    "starsLabel": "9/10",
-    "description": "Clean Campus 00S in near-mint shape — original box creases only, sole barely touched.",
-    "badge": {
-      "type": "new",
-      "label": "New In"
-    },
-    "images": [
-      "https://i.ibb.co/dsn9h38W/3hriftedshoes-14050406-164706098.jpg",
-      "https://i.ibb.co/v4C8bffP/3hriftedshoes-14050406-164715245.jpg",
-      "https://i.ibb.co/hRMPZkR0/3hriftedshoes-14050406-164721808.jpg",
-      "https://raw.githubusercontent.com/abdulsamadxx/3hriftedshoes/main/images/products/g1-campus-00s-1788508579869-d8ro4.jpg"
-    ],
-    "message": "Hi! I'm interested in the Adidas Campus 00S"
-  },
-  {
-    "id": "g2",
-    "brand": "WCG",
-    "filterBrand": "other",
-    "name": "Walking Sneakers",
-    "price": 1500,
-    "size": "UK 7",
-    "stars": 4,
-    "starsLabel": "Lightly Used",
-    "description": "Comfortable everyday walking sneaker, lightly used with plenty of life left in the sole.",
+    "starsLabel": "Chronograph",
+    "description": "18K yellow gold case and Oyster bracelet with a green dial and champagne subdials. Automatic chronograph, water resistant to 100m.",
     "badge": {
       "type": "hot",
       "label": "Hot"
     },
     "images": [
-      "https://i.ibb.co/Mx5xBZZS/IMG-20260622-010750-720.jpg",
-      "https://i.ibb.co/nNKzS0P6/IMG-20260622-011002-091.jpg",
-      "https://i.ibb.co/LyhVs0q/IMG-20260622-011012-276.jpg"
+      "images/rolex-daytona.webp",
+      "https://raw.githubusercontent.com/abdulsamadxx/3hriftedshoes/main/images/products/w1-cosmograph-daytona-1790858066960-r8ifi.jpg"
     ],
-    "message": "Hi! I'm interested in the WCG Walking Sneakers"
+    "message": "Hi! I'm interested in the Rolex Cosmograph Daytona"
   },
   {
-    "id": "g3",
-    "brand": "KAPPA BRAND",
-    "filterBrand": "other",
-    "name": "Running Sneakers",
-    "price": 1800,
-    "size": "UK 9",
+    "id": "w2",
+    "brand": "Rolex",
+    "filterBrand": "icons",
+    "name": "Oyster Perpetual 36",
+    "price": 0,
+    "size": "36mm",
     "stars": 5,
-    "starsLabel": "Excellent",
-    "description": "Kappa running sneakers in excellent shape, great cushioning for daily wear.",
-    "badge": {
-      "type": "new",
-      "label": "New In"
-    },
-    "images": [
-      "https://i.ibb.co/qVjkXsB/IMG-20260628-132923-748.jpg",
-      "https://i.ibb.co/GQdDntjB/IMG-20260628-132923-749.jpg",
-      "https://i.ibb.co/ZRcLR1Bf/IMG-20260628-132547-730.jpg"
-    ],
-    "message": "Hi! I'm interested in the KAPPA BRAND Running Sneakers"
-  },
-  {
-    "id": "g4",
-    "brand": "Puma",
-    "filterBrand": "puma",
-    "name": "Graviton Pro",
-    "price": 1600,
-    "size": "UK 8",
-    "stars": 5,
-    "starsLabel": "9/10",
-    "description": "Puma Graviton Pro, 9/10 condition, minimal wear, perfect for casual or gym use.",
-    "badge": {
-      "type": "new",
-      "label": "New In"
-    },
-    "images": [
-      "https://i.ibb.co/5gRGzQsN/IMG-20260629-103958-487.jpg",
-      "https://i.ibb.co/C35ccTZL/IMG-20260629-104241-462.jpg",
-      "https://i.ibb.co/Z6mrnPyX/IMG-20260629-103958-486.jpg"
-    ],
-    "message": "Hi! I'm interested in the Puma Graviton Pro"
-  },
-  {
-    "id": "g5",
-    "brand": "RJ",
-    "filterBrand": "other",
-    "name": "Clean White Casual",
-    "price": 900,
-    "size": "UK 7",
-    "stars": 4,
-    "starsLabel": "Lightly Used",
-    "description": "Clean white casual shoe, lightly used, pairs well with almost any outfit.",
+    "starsLabel": "Time only",
+    "description": "Steel Oyster bracelet, polished bezel and a turquoise dial. Wears well on men and women.",
     "badge": {
       "type": "hot",
       "label": "Hot"
     },
     "images": [
-      "https://i.ibb.co/mdzWwQt/IMG-20260622-011236-799.jpg",
-      "https://i.ibb.co/hFzC6K8V/IMG-20260622-011241-504.jpg",
-      "https://i.ibb.co/4ZzkYNCn/IMG-20260622-010732-223.jpg"
+      "images/rolex-oyster-perpetual.webp"
     ],
-    "message": "Hi! I'm interested in the RJ Clean White Casual"
+    "message": "Hi! I'm interested in the Rolex Oyster Perpetual 36"
   },
   {
-    "id": "g6",
-    "brand": "Adidas",
-    "filterBrand": "adidas",
-    "name": "Adidas Gazelle",
-    "price": 2300,
-    "size": "UK 8",
+    "id": "w3",
+    "brand": "Patek Philippe",
+    "filterBrand": "icons",
+    "name": "Nautilus Chronograph",
+    "price": 0,
+    "size": "Ask for size",
     "stars": 5,
-    "starsLabel": "Excellent",
-    "description": "Timeless Adidas Gazelle in excellent condition, classic look that never goes out of style.",
-    "badge": {
-      "type": "new",
-      "label": "New In"
-    },
+    "starsLabel": "Chronograph",
+    "description": "Rose gold case and integrated bracelet, black gradient dial with horizontal embossing and a date window.",
+    "badge": null,
     "images": [
-      "https://i.ibb.co/7NbDMtgj/IMG-20260622-011113-412.jpg",
-      "https://i.ibb.co/FkD1d3vp/IMG-20260622-011425-353.jpg",
-      "https://i.ibb.co/gMVB8yg5/IMG-20260622-011159-827.jpg"
+      "images/patek-nautilus-chrono.webp"
     ],
-    "message": "Hi! I'm interested in the Adidas Adidas Gazelle"
+    "message": "Hi! I'm interested in the Patek Philippe Nautilus Chronograph"
   },
   {
-    "id": "g7",
-    "brand": "RS",
-    "filterBrand": "other",
-    "name": "Fashion Sneakers",
-    "price": 1999,
-    "size": "UK 7",
-    "stars": 4,
-    "starsLabel": "Lightly Used",
-    "description": "Trendy fashion sneaker, lightly used, great everyday statement pair.",
-    "badge": {
-      "type": "new",
-      "label": "New In"
-    },
-    "images": [
-      "https://i.ibb.co/99jXZdqp/IMG-20260622-011241-507.jpg",
-      "https://i.ibb.co/jkf5FSK2/IMG-20260622-011241-508.jpg",
-      "https://i.ibb.co/Nn6ywh8K/IMG-20260622-011241-506.jpg"
-    ],
-    "message": "Hi! I'm interested in the RS Fashion Sneakers"
-  },
-  {
-    "id": "g8",
-    "brand": "Adidas",
-    "filterBrand": "adidas",
-    "name": "Campus 00s Wonder White",
-    "price": 1700,
-    "size": "UK 7",
+    "id": "w4",
+    "brand": "Audemars Piguet",
+    "filterBrand": "icons",
+    "name": "Code 11.59 Chronograph",
+    "price": 0,
+    "size": "Ask for size",
     "stars": 5,
-    "starsLabel": "9/10",
-    "description": "Campus 00s Wonder White, 9/10 condition, crisp colorway, barely worn.",
+    "starsLabel": "Chronograph",
+    "description": "Brushed silver dial, pink gold numerals and hands, three subdials and a grey alligator strap.",
+    "badge": null,
+    "images": [
+      "images/audemars-piguet-code-1159.webp"
+    ],
+    "message": "Hi! I'm interested in the Audemars Piguet Code 11.59 Chronograph"
+  },
+  {
+    "id": "w5",
+    "brand": "Omega",
+    "filterBrand": "luxury",
+    "name": "Speedmaster Professional",
+    "price": 0,
+    "size": "Ask for size",
+    "stars": 5,
+    "starsLabel": "Chronograph",
+    "description": "The Moonwatch in two-tone steel and gold, with a silver dial, gold subdials and a tachymeter bezel.",
     "badge": {
       "type": "hot",
       "label": "Hot"
     },
     "images": [
-      "https://i.ibb.co/P2Hnq8G/IMG-20260630-164700-612.jpg",
-      "https://i.ibb.co/6x99BWZ/IMG-20260630-164700-677.jpg",
-      "https://i.ibb.co/wFzQqccW/IMG-20260701-125134-956.jpg"
+      "images/omega-speedmaster.webp"
     ],
-    "message": "Hi! I'm interested in the Adidas Campus 00s Wonder White"
+    "message": "Hi! I'm interested in the Omega Speedmaster Professional"
   },
   {
-    "id": "g9",
-    "brand": "Nike",
-    "filterBrand": "nike",
-    "name": "Revolution",
-    "price": 1400,
-    "size": "UK 8",
+    "id": "w6",
+    "brand": "Hublot",
+    "filterBrand": "luxury",
+    "name": "Classic Fusion Aerofusion Orlinski",
+    "price": 0,
+    "size": "45mm",
     "stars": 5,
-    "starsLabel": "Excellent",
-    "description": "Nike Revolution running shoe, excellent condition, lightweight and breathable.",
+    "starsLabel": "Chronograph",
+    "description": "Sky blue ceramic case with a faceted design, skeleton chronograph dial and matching rubber strap.",
     "badge": {
       "type": "new",
       "label": "New In"
     },
     "images": [
-      "https://i.ibb.co/9k2XwznL/IMG-20260630-164704-341.jpg",
-      "https://i.ibb.co/8Lqcsdnb/IMG-20260630-164704-342.jpg",
-      "https://i.ibb.co/fzxyh9CK/IMG-20260630-164704-343.jpg"
+      "images/hublot-orlinski.webp"
     ],
-    "message": "Hi! I'm interested in the Nike Revolution"
+    "message": "Hi! I'm interested in the Hublot Classic Fusion Aerofusion Orlinski"
   },
   {
-    "id": "g10",
-    "brand": "Puma",
-    "filterBrand": "puma",
-    "name": "Caven 2.0",
-    "price": 1500,
-    "size": "UK 7",
-    "stars": 4,
-    "starsLabel": "Lightly Used",
-    "description": "Puma Caven 2.0, lightly used, versatile everyday sneaker.",
-    "badge": {
-      "type": "hot",
-      "label": "Hot"
-    },
-    "images": [
-      "https://i.ibb.co/mrTvCWB4/IMG-20260630-164646-130.jpg",
-      "https://i.ibb.co/mr1kzLB4/IMG-20260630-164646-131.jpg",
-      "https://i.ibb.co/m5vYp0gk/IMG-20260630-164646-133.jpg"
-    ],
-    "message": "Hi! I'm interested in the Puma Caven 2.0"
-  },
-  {
-    "id": "g11",
-    "brand": "Nike",
-    "filterBrand": "nike",
-    "name": "MD Runner",
-    "price": 2200,
-    "size": "UK 8",
+    "id": "w7",
+    "brand": "Tudor",
+    "filterBrand": "luxury",
+    "name": "Black Bay Bronze",
+    "price": 0,
+    "size": "Ask for size",
     "stars": 5,
-    "starsLabel": "Excellent",
-    "description": "Nike MD Runner, excellent condition, comfy sole for all-day wear.",
+    "starsLabel": "Dive watch",
+    "description": "Bronze case, slate dial and bezel, 200m water resistance and a fabric strap. Bronze develops its own patina and can mark skin.",
     "badge": {
       "type": "new",
       "label": "New In"
     },
     "images": [
-      "https://i.ibb.co/QjtxrcwR/lv-0-20260720132522.jpg",
-      "https://i.ibb.co/ZpnyZKfM/lv-0-20260720132632.jpg",
-      "https://i.ibb.co/chx3cf6H/lv-0-20260720132601.jpg"
+      "images/tudor-black-bay-bronze.webp"
     ],
-    "message": "Hi! I'm interested in the Nike MD Runner"
+    "message": "Hi! I'm interested in the Tudor Black Bay Bronze"
   },
   {
-    "id": "g12",
-    "brand": "Nike",
-    "filterBrand": "nike",
-    "name": "Air Max 97 (Silver Bullet)",
-    "price": 2200,
-    "size": "UK 8",
+    "id": "w8",
+    "brand": "Breitling",
+    "filterBrand": "luxury",
+    "name": "Avenger Automatic 43",
+    "price": 0,
+    "size": "43mm",
     "stars": 5,
-    "starsLabel": "Excellent",
-    "description": "Iconic Air Max 97 Silver Bullet, excellent condition, a true collector's pair.",
+    "starsLabel": "Chronometer",
+    "description": "Steel case, khaki dial, date window and a khaki fabric strap. Chronometer certified.",
     "badge": {
-      "type": "hot",
-      "label": "Hot"
+      "type": "new",
+      "label": "New In"
     },
     "images": [
-      "https://i.ibb.co/mr6Kk59G/IMG-20260706-130143-105.jpg",
-      "https://i.ibb.co/mVLsP5DW/IMG-20260706-130138-862.jpg",
-      "https://i.ibb.co/ycCDX23b/IMG-20260706-130148-601.jpg"
+      "images/breitling-avenger.webp"
     ],
-    "message": "Hi! I'm interested in the Nike Air Max 97 (Silver Bullet)"
+    "message": "Hi! I'm interested in the Breitling Avenger Automatic 43"
   },
   {
-    "id": "g13",
-    "brand": "New Balance",
-    "filterBrand": "other",
-    "name": "373",
-    "price": 2200,
-    "size": "UK 8",
+    "id": "w9",
+    "brand": "Panerai",
+    "filterBrand": "luxury",
+    "name": "Luminor Due",
+    "price": 0,
+    "size": "Ask for size",
     "stars": 5,
-    "starsLabel": "Excellent",
-    "description": "New Balance 373, excellent condition, retro silhouette with modern comfort.",
-    "badge": {
-      "type": "new",
-      "label": "New In"
-    },
+    "starsLabel": "Small seconds, date",
+    "description": "Compact steel case with the crown-protector lever, a greige sunray dial and a red strap.",
+    "badge": null,
     "images": [
-      "https://i.ibb.co/wZQDXRHt/IMG-20260630-164708-321.jpg",
-      "https://i.ibb.co/V0tqrfvs/IMG-20260630-164708-322.jpg",
-      "https://i.ibb.co/9kK605Hc/IMG-20260630-164708-323.jpg"
+      "images/panerai-luminor-due.webp"
     ],
-    "message": "Hi! I'm interested in the New Balance 373"
+    "message": "Hi! I'm interested in the Panerai Luminor Due"
   },
   {
-    "id": "g14",
-    "brand": "Pier One",
-    "filterBrand": "other",
-    "name": "Chunky Dad Sneakers",
-    "price": 2200,
-    "size": "UK 8",
-    "stars": 4,
-    "starsLabel": "Lightly Used",
-    "description": "Pier One chunky dad sneakers, lightly used, bold statement piece.",
-    "badge": {
-      "type": "new",
-      "label": "New In"
-    },
+    "id": "w10",
+    "brand": "TAG Heuer",
+    "filterBrand": "luxury",
+    "name": "Carrera Chronograph",
+    "price": 0,
+    "size": "Ask for size",
+    "stars": 5,
+    "starsLabel": "Chronograph",
+    "description": "Steel case, green sunray dial, single chronograph register and a black strap.",
+    "badge": null,
     "images": [
-      "https://i.ibb.co/q3q60VQC/IMG-20260703-124230-678.jpg",
-      "https://i.ibb.co/TxsgDXnC/IMG-20260630-164657-110.jpg",
-      "https://i.ibb.co/xqyDv23N/IMG-20260703-124234-865.jpg"
+      "images/tag-heuer-carrera.webp"
     ],
-    "message": "Hi! I'm interested in the Pier One Chunky Dad Sneakers"
+    "message": "Hi! I'm interested in the TAG Heuer Carrera Chronograph"
   },
   {
-    "id": "g15",
-    "brand": "S.Oliver",
-    "filterBrand": "other",
-    "name": "Court Sneakers",
-    "price": 2200,
-    "size": "UK 8",
-    "stars": 4,
-    "starsLabel": "Lightly Used",
-    "description": "S.Oliver court sneakers, lightly used, minimal clean design for everyday wear.",
-    "badge": {
-      "type": "new",
-      "label": "New In"
-    },
+    "id": "w11",
+    "brand": "Longines",
+    "filterBrand": "luxury",
+    "name": "Spirit Flyback",
+    "price": 2072000,
+    "size": "42mm",
+    "stars": 5,
+    "starsLabel": "Flyback chronograph",
+    "description": "Automatic, steel with an 18K rose gold bezel cap, brown gradient dial, silicon balance-spring and up to 68 hours of power reserve.",
+    "badge": null,
     "images": [
-      "https://i.ibb.co/KxGmVf41/IMG-20260703-124520-749.jpg",
-      "https://i.ibb.co/nMsM0pXM/IMG-20260703-124516-448.jpg",
-      "https://i.ibb.co/R59f5vb/IMG-20260707-150709-213.jpg"
+      "images/longines-spirit-flyback.webp"
     ],
-    "message": "Hi! I'm interested in the S.Oliver Court Sneakers"
+    "message": "Hi! I'm interested in the Longines Spirit Flyback"
+  },
+  {
+    "id": "w12",
+    "brand": "Longines",
+    "filterBrand": "swiss",
+    "name": "Heritage Classic Silver Arrow",
+    "price": 0,
+    "size": "Ask for size",
+    "stars": 5,
+    "starsLabel": "Dress watch",
+    "description": "Vintage-inspired steel dress watch with a greige dial, faceted markers and a brown leather strap.",
+    "badge": null,
+    "images": [
+      "images/longines-silver-arrow.webp"
+    ],
+    "message": "Hi! I'm interested in the Longines Heritage Classic Silver Arrow"
+  },
+  {
+    "id": "w13",
+    "brand": "Longines",
+    "filterBrand": "swiss",
+    "name": "Mini DolceVita",
+    "price": 526000,
+    "size": "21.5 x 29mm",
+    "stars": 5,
+    "starsLabel": "Quartz",
+    "description": "Rectangular steel case, silver guilloche dial with blue numerals and a black leather double-wrap strap.",
+    "badge": null,
+    "images": [
+      "images/longines-mini-dolcevita.webp"
+    ],
+    "message": "Hi! I'm interested in the Longines Mini DolceVita"
+  },
+  {
+    "id": "w14",
+    "brand": "Frederique Constant",
+    "filterBrand": "swiss",
+    "name": "Classics",
+    "price": 0,
+    "size": "Ask for size",
+    "stars": 5,
+    "starsLabel": "Dress watch, date",
+    "description": "Slim steel dress watch with a blue sunray dial, applied markers and a steel bracelet.",
+    "badge": null,
+    "images": [
+      "images/frederique-constant-classics.webp"
+    ],
+    "message": "Hi! I'm interested in the Frederique Constant Classics"
+  },
+  {
+    "id": "w15",
+    "brand": "MeisterSinger",
+    "filterBrand": "swiss",
+    "name": "Metris",
+    "price": 0,
+    "size": "Ask for size",
+    "stars": 5,
+    "starsLabel": "Single-hand",
+    "description": "One hand tells the time to about five minutes, on a cream dial with a big date and steel mesh bracelet.",
+    "badge": null,
+    "images": [
+      "images/meistersinger-metris.webp"
+    ],
+    "message": "Hi! I'm interested in the MeisterSinger Metris"
+  },
+  {
+    "id": "w16",
+    "brand": "POEDAGAR",
+    "filterBrand": "everyday",
+    "name": "984 Skeleton Chronograph",
+    "price": 26600,
+    "size": "Ask for size",
+    "stars": 5,
+    "starsLabel": "Quartz",
+    "description": "Two-tone steel with a skeleton-style dial, moon-phase-style subdial, date and crystal-set markers.",
+    "badge": null,
+    "images": [
+      "images/poedagar-984.webp"
+    ],
+    "message": "Hi! I'm interested in the POEDAGAR 984 Skeleton Chronograph"
+  },
+  {
+    "id": "w17",
+    "brand": "Sport",
+    "filterBrand": "everyday",
+    "name": "Ana-Digi Outdoor",
+    "price": 14000,
+    "size": "Ask for size",
+    "stars": 5,
+    "starsLabel": "Ana-digi",
+    "description": "Black resin case with alarm, stopwatch, date and backlight. Water resistant.",
+    "badge": null,
+    "images": [
+      "images/ana-digi-sport.webp"
+    ],
+    "message": "Hi! I'm interested in the Sport Ana-Digi Outdoor"
+  },
+  {
+    "id": "w18",
+    "brand": "X-GEAR",
+    "filterBrand": "everyday",
+    "name": "Evolution Ana-Digi",
+    "price": 5600,
+    "size": "Ask for size",
+    "stars": 5,
+    "starsLabel": "Ana-digi, 50M",
+    "description": "Gold-tone and black steel with analog hands and digital windows. 50M water resistant.",
+    "badge": null,
+    "images": [
+      "images/x-gear-evolution.webp"
+    ],
+    "message": "Hi! I'm interested in the X-GEAR Evolution Ana-Digi"
+  },
+  {
+    "id": "w19",
+    "brand": "SD",
+    "filterBrand": "everyday",
+    "name": "Minimalist Rose Tone",
+    "price": 2800,
+    "size": "Ask for size",
+    "stars": 5,
+    "starsLabel": "Quartz",
+    "description": "Slim rose-tone case, white dial and tan leather strap.",
+    "badge": null,
+    "images": [
+      "images/sd-minimalist.webp"
+    ],
+    "message": "Hi! I'm interested in the SD Minimalist Rose Tone"
   }
 ]
